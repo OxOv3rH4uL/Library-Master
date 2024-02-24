@@ -12,7 +12,7 @@ const Home = () => {
   const [data, setData] = useState<Books[]>([]);
   const url = process.env.NEXT_PUBLIC_BACKEND_URL;
   useEffect(() => {
-    axios.get<Books[]>(url)
+    axios.get<Books[]>(url+"")
       .then(response => {
         setData(response.data);
       })

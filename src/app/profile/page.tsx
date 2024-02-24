@@ -2,13 +2,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+interface UserData {
+    name: string;
+    email: string;
+    borrowed_book: string;
+    return_date: string;
+}
 const Profile = () => {
-  const [userData, setUserData] = useState(null);
-
+  const [userData,setUserData] = useState<UserData | null>(null);
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const url = process.env.NEXT_PUBLIC_BACKEND_URL;
+        const url = "https://librarymaster-backend.glitch.me/";
         const id = localStorage.getItem('id');
         console.log(id);
         const response = await axios.get(url+"profile/"+id)
