@@ -39,7 +39,7 @@ export default function UserAuthForm() {
       })
       const url = process.env.NEXT_PUBLIC_BACKEND_URL;     
       function onSubmit(values: z.infer<typeof formSchema>) {
-        axios.post(url+"/login",values)
+        axios.post(url+"login",values)
         .then(res=>{
             if(res.status == 200){
                 localStorage.setItem('id',res.data.userId);
@@ -47,7 +47,12 @@ export default function UserAuthForm() {
                 router.push('/home');
             }
         }).catch(err=>{
-            alert(`Internal Server Error :${err}`);
+            if(err.response.status == 401){
+              alert("Invalid Credentials");
+            }else{
+
+              alert(`Internal Server Error :${err}`);
+            }
         })
       }
 
