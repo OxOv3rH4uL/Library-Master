@@ -12,9 +12,9 @@ function Book(){
     const router = useRouter();
     const url = process.env.NEXT_PUBLIC_BACKEND_URL;
     function confirm(){
-        const id = localStorage.getItem('id');
-        const bookId = localStorage.getItem('bookId');
-        const bookName = localStorage.getItem('bookTitle');
+        const id = typeof window !== 'undefined' ? localStorage.getItem('id') : null;
+        const bookId = typeof window !== 'undefined' ? localStorage.getItem('bookId') : null;
+        const bookName = typeof window !== 'undefined' ? localStorage.getItem('bookTitle') : null;
         const final_date = date?.toString().slice(0,15);
         if(!bookId || !bookName || !final_date){
             console.log("Missing Book Information")
