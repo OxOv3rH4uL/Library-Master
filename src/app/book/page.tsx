@@ -1,20 +1,35 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
+import { Resend } from 'resend';
 
 
 function Book(){
     const [date, setDate] = React.useState<Date | undefined>(new Date())
     const router = useRouter();
+    //console.log(process.env.NEXT_PUBLIC_RESEND_API);
+    const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API);
+    const [email,setEmail] = useState("");
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const id = localStorage.getItem('id');
+    useEffect(()=>{
+        if(id){
+            axios.get(`${url}email/${id}`)
+            .then(res =>{
+                setEmail(res.data.email);
+            })
+        }
+    },[id]);
     function confirm(){
-        const url = process.env.NEXT_PUBLIC_BACKEND_URL;
-        const id = localStorage.getItem('id');
         const bookId = localStorage.getItem('bookId');
         const bookName = localStorage.getItem('bookTitle');
         const final_date = date?.toString().slice(0,15);
+        if(!bookId || !bookName || !final_date){
+            console.log("Missing Book Information")
+        }
         // console.log(final_date);
         axios.post(`${url}book/${id}/${bookId}/${bookName}/${final_date}`)
         .then(res => {
@@ -24,6 +39,8 @@ function Book(){
             }else if(res.status == 200  && res.data == "Already Borrowed a Book!"){
                 alert("You Already Borrowed a Book!");
                 router.push("/home");
+            }else if(res.status == 200  && res.data == "Invalid Email!"){
+                alert("You have registered an Invalid Email! Couldnt Send the Email!");
             }
         }).catch(err => {
             alert(`Internal Server Error: ${err}`);
