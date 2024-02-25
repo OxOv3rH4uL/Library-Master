@@ -43,7 +43,7 @@ const formSchema = z.object({
 export default function UpdateBookForm(){
     const router = useRouter();
     const url = process.env.NEXT_PUBLIC_BACKEND_URL;
-    const id = localStorage.getItem('updatebookId');
+    const id = typeof window !== 'undefined' ? localStorage.getItem('updatebookId') : null;
     console.log(id);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

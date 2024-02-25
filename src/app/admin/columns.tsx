@@ -5,6 +5,7 @@ import { Row } from '@tanstack/react-table';
 import axios from 'axios';
 export type BooksRow = Row<Books>;
 import { useRouter } from 'next/router';
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 export type Books = {
     id: string;
@@ -18,27 +19,81 @@ export type Books = {
 export const columns: ColumnDef<Books>[] = [
   {
     accessorKey: 'id',
-    header: 'ID',
+    header: ({column}) => {
+        return (
+            <Button variant="ghost"
+            onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                ID
+                <ArrowUpDown className='ml-2 h-4 w-4'/>
+            </Button>
+        )
+    },
   },
   {
     accessorKey: 'title',
-    header: 'TITLE',
+    header: ({column}) => {
+        return (
+            <Button variant="ghost"
+            onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                TITLE
+                <ArrowUpDown className='ml-2 h-4 w-4'/>
+            </Button>
+        )
+    },
   },
   {
     accessorKey: 'author',
-    header: 'AUTHOR',
+    header: ({column}) => {
+        return (
+            <Button variant="ghost"
+            onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                AUTHOR
+                <ArrowUpDown className='ml-2 h-4 w-4'/>
+            </Button>
+        )
+    },
   },
   {
     accessorKey: 'genre',
-    header: 'GENRE',
+    header: ({column}) => {
+        return (
+            <Button variant="ghost"
+            onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                GENRE
+                <ArrowUpDown className='ml-2 h-4 w-4'/>
+            </Button>
+        )
+    },
   },
   {
     accessorKey: 'published_year',
-    header: 'PUBLISHED YEAR',
+    header: ({column}) => {
+        return (
+            <Button variant="ghost"
+            onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                PUBLISHED YEAR
+                <ArrowUpDown className='ml-2 h-4 w-4'/>
+            </Button>
+        )
+    },
   },
   {
     accessorKey: 'available_copies',
-    header: 'AVAILABLE COPIES',
+    header: ({column}) => {
+        return (
+            <Button variant="ghost"
+            onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                AVAILABLE COPIES
+                <ArrowUpDown className='ml-2 h-4 w-4'/>
+            </Button>
+        )
+    },
   },
   {
     accessorKey: 'update',
