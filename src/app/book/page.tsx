@@ -10,19 +10,8 @@ import { Resend } from 'resend';
 function Book(){
     const [date, setDate] = React.useState<Date | undefined>(new Date())
     const router = useRouter();
-    //console.log(process.env.NEXT_PUBLIC_RESEND_API);
-    const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API);
-    const [email,setEmail] = useState("");
     const url = process.env.NEXT_PUBLIC_BACKEND_URL;
     const id = localStorage.getItem('id');
-    useEffect(()=>{
-        if(id){
-            axios.get(`${url}email/${id}`)
-            .then(res =>{
-                setEmail(res.data.email);
-            })
-        }
-    },[id]);
     function confirm(){
         const bookId = localStorage.getItem('bookId');
         const bookName = localStorage.getItem('bookTitle');
