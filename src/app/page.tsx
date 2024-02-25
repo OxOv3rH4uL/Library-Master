@@ -12,6 +12,7 @@ function LandingPage(){
                   <div className="flex p-10">
                       <a href="/login" className="mr-4 px-6 py-3 bg-white hover:bg-cyan-200 text-black font-semibold rounded-md">LOGIN</a>
                       <a href="/signup" className="px-6 py-3 bg-white hover:bg-cyan-200 text-black font-semibold rounded-md">SIGNUP</a>
+                      <a href="/admin_login" className="px-6 py-3 bg-white hover:bg-cyan-200 text-black font-semibold rounded-md">ADMIN LOGIN</a>
                   </div>
 
                                       

@@ -13,7 +13,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const url = "https://librarymaster-backend.glitch.me/";
+        const url = process.env.NEXT_PUBLIC_BACKEND_URL;
         const id = localStorage.getItem('id');
         console.log(id);
         const response = await axios.get(url+"profile/"+id)
