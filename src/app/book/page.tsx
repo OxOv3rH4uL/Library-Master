@@ -11,8 +11,8 @@ function Book(){
     const [date, setDate] = React.useState<Date | undefined>(new Date())
     const router = useRouter();
     const url = process.env.NEXT_PUBLIC_BACKEND_URL;
-    const id = localStorage.getItem('id');
     function confirm(){
+        const id = localStorage.getItem('id');
         const bookId = localStorage.getItem('bookId');
         const bookName = localStorage.getItem('bookTitle');
         const final_date = date?.toString().slice(0,15);
