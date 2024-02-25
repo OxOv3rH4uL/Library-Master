@@ -1,4 +1,4 @@
-import AddBookForm from "@/components/bookForm/Book";
+import AddBookForm from "@/components/bookForm/AddBook";
 
 export default function Add() {
     return (

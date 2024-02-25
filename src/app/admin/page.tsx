@@ -24,7 +24,7 @@ const Admin = () => {
         <div className="container">
         <div className="flex justify-end pt-10">
             <Button variant="secondary" size={"lg"} className='bg-black text-white hover:bg-cyan'>
-                <Link href='/add'>Add Book</Link>
+                <Link href='/add'>ADD BOOK</Link>
             </Button>
         </div>
         <h1 className="text-3xl font-semibold mb-4">Books</h1>

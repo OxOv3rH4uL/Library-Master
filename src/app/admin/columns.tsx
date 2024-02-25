@@ -47,7 +47,7 @@ export const columns: ColumnDef<Books>[] = [
       <Button
         variant="ghost"
         className="bg-black text-white hover:bg-black hover:text-white"
-        onClick={() => handleBorrow(row.original.id,row.original.title)}
+        onClick={() => handleUpdate(row.original.id)}
       >
         <Link href="/update">UPDATE</Link>
       </Button>
@@ -65,9 +65,8 @@ export const columns: ColumnDef<Books>[] = [
   }
 ];
 
-const handleBorrow = (id: string,title :string) => {
-  localStorage.setItem('bookId', id);
-  localStorage.setItem('bookTitle', title);
+const handleUpdate = (id: string) => {
+  localStorage.setItem('updatebookId', id);
 };
 
 // const router = useRouter();
